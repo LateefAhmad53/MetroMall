@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Parts - Category</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        /* Search & Filter Styles */
+        .filter-container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-container input, .filter-container select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            width: 180px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .filter-container input:focus, .filter-container select:focus {
+            border-color: #f39c12;
+        }
+
+        /* Product Listing Styles */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            font-size: 1.4rem;
+            color: #333;
+            padding: 15px;
+            background-color: #f4f4f4;
+            margin: 0;
+            text-align: center;
+        }
+
+        .product p {
+            font-size: 1.1rem;
+            color: #555;
+            padding: 0 15px 15px;
+            text-align: center;
+        }
+
+        .product button {
+            width: 90%; /* Reduced width */
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #f39c12;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin: 5px auto; /* Center the buttons */
+        }
+
+        .product button:hover {
+            background-color: #e67e22;
+        }
+
+        .product .wishlist-btn {
+            background-color: #e74c3c;
+        }
+
+        .product .wishlist-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                margin: 0 8px;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-container input, .filter-container select {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Auto Parts & Accessories</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="auto-parts.html">Auto Parts</a>
+            <a href="cars.html">Cars</a>
+            <a href="accessories.html">Accessories</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="real-estate.html">Real Estate</a>
+            <a href="electronics.html">Electronics</a>
+        </nav>
+    </header>
+
+    <section id="category-listing">
+        <!-- 🔍 Search & Filters -->
+        <div class="filter-container">
+            <input type="text" id="search" placeholder="Search for parts...">
+            
+            <select id="type-filter">
+                <option value="">All Types</option>
+                <option value="Engine">Engine Parts</option>
+                <option value="Brakes">Brakes</option>
+                <option value="Tires">Tires</option>
+                <option value="Lights">Lights</option>
+            </select>
+
+            <input type="number" id="min-price" placeholder="Min Price">
+            <input type="number" id="max-price" placeholder="Max Price">
+        </div>
+
+        <!-- 🛠️ Product Listing -->
+        <div class="product-grid" id="product-grid">
+            <div class="product" data-type="Engine" data-price="150">
+                <img src="images/engine.jpg" alt="Engine Part">
+                <h3>Car Engine</h3>
+                <p>$1,500</p>
+                <button class="wishlist-btn" data-name="Car Engine" data-price="$1,500" data-image="images/engine.jpg">❤️ Wishlist</button>
+                <button class="cart-btn" data-name="Car Engine" data-price="$1,500" data-image="images/engine.jpg">🛒 Add to Cart</button>
+            </div>
+            <div class="product" data-type="Brakes" data-price="80">
+                <img src="images/brakes.jpg" alt="Brake System">
+                <h3>Brake System</h3>
+                <p>$80</p>
+                <button class="wishlist-btn">❤️ Wishlist</button>
+                <button class="cart-btn">🛒 Add to Cart</button>
+            </div>
+            <div class="product" data-type="Tires" data-price="200">
+                <img src="images/tires.jpg" alt="Car Tires">
+                <h3>Set of Tires</h3>
+                <p>$200</p>
+                <button class="wishlist-btn">❤️ Wishlist</button>
+                <button class="cart-btn">🛒 Add to Cart</button>
+            </div>
+            <div class="product" data-type="Lights" data-price="50">
+                <img src="images/lights.jpg" alt="Car Lights">
+                <h3>LED Car Lights</h3>
+                <p>$50</p>
+                <button class="wishlist-btn">❤️ Wishlist</button>
+                <button class="cart-btn">🛒 Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Metro Mall. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search');
+            const typeFilter = document.getElementById('type-filter');
+            const minPrice = document.getElementById('min-price');
+            const maxPrice = document.getElementById('max-price');
+            const products = document.querySelectorAll('.product');
+
+            function filterProducts() {
+                const searchText = searchInput.value.toLowerCase();
+                const selectedType = typeFilter.value;
+                const min = minPrice.value ? parseInt(minPrice.value) : 0;
+                const max = maxPrice.value ? parseInt(maxPrice.value) : Infinity;
+
+                products.forEach(product => {
+                    const title = product.querySelector('h3').innerText.toLowerCase();
+                    const type = product.dataset.type;
+                    const price = parseInt(product.dataset.price);
+
+                    const matchesSearch = title.includes(searchText);
+                    const matchesType = selectedType === "" || type === selectedType;
+                    const matchesPrice = price >= min && price <= max;
+
+                    product.style.display = (matchesSearch && matchesType && matchesPrice) ? "block" : "none";
+                });
+            }
+
+            searchInput.addEventListener('input', filterProducts);
+            typeFilter.addEventListener('change', filterProducts);
+            minPrice.addEventListener('input', filterProducts);
+            maxPrice.addEventListener('input', filterProducts);
+        });
+    </script>
+
+</body>
+</html>

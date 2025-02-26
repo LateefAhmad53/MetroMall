@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Metro Mall</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Premium Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1e1e1e);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cart-container {
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            color: gold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid gold;
+            padding: 10px;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .cart-item button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .quantity-btn {
+            background-color: gold;
+            padding: 5px 10px;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cart-total {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: gold;
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .cart-actions button {
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            transition: 0.3s;
+        }
+
+        .clear-btn {
+            background: red;
+            color: white;
+        }
+
+        .checkout-btn {
+            background: gold;
+            color: black;
+        }
+
+        .clear-btn:hover {
+            background: darkred;
+        }
+
+        .checkout-btn:hover {
+            background: black;
+            color: gold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Shopping Cart</h1>
+    <div class="cart-container" id="cart-container"></div>
+    <div class="cart-total">Total: ₦<span id="total-price">0.00</span></div>
+
+    <div class="cart-actions">
+        <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const container = document.getElementById("cart-container");
+            let totalPrice = 0;
+            container.innerHTML = "";
+
+            if (cart.length === 0) {
+                container.innerHTML = "<p>Your cart is empty.</p>";
+                document.getElementById("total-price").textContent = "0.00";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                let itemPrice = Number(item.price);
+                if (isNaN(itemPrice)) itemPrice = 0; 
+
+                let itemTotal = itemPrice * item.quantity;
+                totalPrice += itemTotal;
+
+                const itemElement = document.createElement("div");
+                itemElement.classList.add("cart-item");
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div>
+                        <p><strong>${item.name}</strong></p>
+                        <p>₦${itemPrice.toFixed(2)} x ${item.quantity} = <strong>₦${itemTotal.toFixed(2)}</strong></p>
+                    </div>
+                    <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">➕</button>
+                    <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">➖</button>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                container.appendChild(itemElement);
+            });
+
+            document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+        }
+
+        function updateQuantity(index, change) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart[index].quantity + change > 0) {
+                cart[index].quantity += change;
+            } else {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            loadCart();
+        }
+
+        function checkout() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            window.location.href = "checkout.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCart);
+    </script>
+
+</body>
+</html>

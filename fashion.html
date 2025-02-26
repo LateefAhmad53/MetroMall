@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion - Metro Mall</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f9a825;
+        }
+
+        #fashion-products {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filters input, .filters select {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 25%;
+        }
+
+        .filters input[type="number"] {
+            width: 15%;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product h3 {
+            font-size: 1.5em;
+            margin-top: 15px;
+        }
+
+        .product p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #f9a825;
+        }
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #f9a825;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Fashion Collection</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="auto-parts.html">Auto Parts</a>
+            <a href="cars.html">Cars</a>
+            <a href="accessories.html">Accessories</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="real-estate.html">Real Estate</a>
+            <a href="electronics.html">Electronics</a>
+        </nav>
+    </header>
+
+    <!-- Fashion Products Section -->
+    <section id="fashion-products">
+        <div class="filters">
+            <input type="text" id="search-fashion" placeholder="Search Fashion Items">
+            <select id="brand-filter-fashion">
+                <option value="">All Brands</option>
+                <option value="nike">Nike</option>
+                <option value="adidas">Adidas</option>
+                <option value="zara">Zara</option>
+            </select>
+            <input type="number" id="min-price" placeholder="Min Price">
+            <input type="number" id="max-price" placeholder="Max Price">
+        </div>
+
+        <div class="product-list">
+            <div class="product" data-brand="nike" data-price="50">
+                <img src="images/fashion1.jpg" alt="Nike Sneakers">
+                <h3>Nike Sneakers</h3>
+                <p>$50</p>
+            </div>
+            <div class="product" data-brand="zara" data-price="70">
+                <img src="images/fashion2.jpg" alt="Zara Dress">
+                <h3>Zara Dress</h3>
+                <p>$70</p>
+            </div>
+            <!-- Add more products here -->
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Metro Mall | A subsidiary of Dawsen Group SL Ltd.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="https://wa.me/+2348134029388" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

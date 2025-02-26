@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Metro Mall</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Elegant Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1e1e1e);
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Glowing Particles */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/1600x900/?gold,luxury') center/cover no-repeat;
+            filter: blur(10px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        /* Metro Mall Header */
+        .store-header {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: gold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Glassmorphic Sign-Up Form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Input Fields */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid gold;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        input::placeholder {
+            color: rgba(255, 215, 0, 0.5);
+        }
+
+        /* File Upload Style */
+        #profile-pic {
+            border: none;
+            background: none;
+            color: gold;
+            cursor: pointer;
+        }
+
+        /* Glowing Button */
+        .register-btn {
+            width: 100%;
+            padding: 12px;
+            background: gold;
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .register-btn:hover {
+            background: black;
+            color: gold;
+            box-shadow: 0 0 15px gold;
+        }
+
+        /* Sign-In Link */
+        .signin-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signin-link a {
+            color: gold;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1 class="store-header">Metro Mall</h1>
+        <h2>Join the Elite</h2>
+        <p>Sign up and experience premium shopping</p>
+
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="file" id="profile-pic" accept="image/*">
+
+        <button class="register-btn" onclick="register()">Register</button>
+
+        <p class="signin-link">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <script>
+        function register() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let file = document.getElementById("profile-pic").files[0];
+
+            if (!name || !email || !password) {
+                alert("All fields are required!");
+                return;
+            }
+
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                let profilePic = e.target.result; // Base64 image data
+                let user = { name, email, password, profilePic };
+                localStorage.setItem("user", JSON.stringify(user));
+                alert("Registration Successful! You can now log in.");
+                window.location.href = "login.html"; // Redirect to login page
+            };
+
+            if (file) {
+                reader.readAsDataURL(file); // Convert image to Base64
+            } else {
+                let user = { name, email, password, profilePic: "images/default-avatar.png" };
+                localStorage.setItem("user", JSON.stringify(user));
+                alert("Registration Successful! You can now log in.");
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

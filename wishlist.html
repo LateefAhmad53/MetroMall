@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Metro Mall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* 🌟 Premium Gold UI */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            margin: 0;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.6);
+        }
+
+        /* 🛒 Wishlist Container */
+        .wishlist-container {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            text-align: left;
+        }
+
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid gold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .wishlist-item:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .wishlist-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid gold;
+        }
+
+        .wishlist-item div {
+            flex: 1;
+            padding-left: 15px;
+        }
+
+        .wishlist-item p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: white;
+        }
+
+        /* ✨ Premium Buttons */
+        button {
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            background: linear-gradient(45deg, #ff4d4d, #ff1a1a);
+            color: white;
+        }
+
+        .remove-btn:hover {
+            background: linear-gradient(45deg, #cc0000, #990000);
+        }
+
+        .clear-btn {
+            background: linear-gradient(45deg, gold, #ffcc00);
+            color: black;
+            margin-top: 15px;
+        }
+
+        .clear-btn:hover {
+            background: linear-gradient(45deg, #e6b800, #d4a000);
+        }
+
+        /* ✅ Responsive Design */
+        @media (max-width: 768px) {
+            .wishlist-container {
+                width: 90%;
+            }
+            .wishlist-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 10px;
+            }
+            .wishlist-item div {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌟 My Wishlist</h1>
+    <div class="wishlist-container" id="wishlist-container"></div>
+    <button class="clear-btn" onclick="clearWishlist()">🗑️ Clear Wishlist</button>
+
+    <script>
+        function loadWishlist() {
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            const container = document.getElementById("wishlist-container");
+            container.innerHTML = "";
+
+            if (wishlist.length === 0) {
+                container.innerHTML = "<p>Your wishlist is empty.</p>";
+                return;
+            }
+
+            wishlist.forEach((item, index) => {
+                const itemElement = document.createElement("div");
+                itemElement.classList.add("wishlist-item");
+
+                // Handle price formatting
+                let priceHTML = "";
+                if (item.price && item.price !== "N/A") {
+                    priceHTML = `<p><strong style="color: gold;">$${item.price}</strong></p>`;
+                }
+
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div>
+                        <p><strong>${item.name}</strong></p>
+                        ${priceHTML} <!-- Only show price if it's valid -->
+                    </div>
+                    <button class="remove-btn" onclick="removeFromWishlist(${index})"><i class="fas fa-trash"></i> Remove</button>
+                `;
+                container.appendChild(itemElement);
+            });
+        }
+
+        function removeFromWishlist(index) {
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            wishlist.splice(index, 1);
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            loadWishlist();
+        }
+
+        function clearWishlist() {
+            localStorage.removeItem("wishlist");
+            loadWishlist();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadWishlist);
+    </script>
+
+</body>
+</html>

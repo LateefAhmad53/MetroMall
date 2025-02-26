@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Mall - Auto Parts & Accessories</title>
+    <link rel="stylesheet" href="store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <div class="logo-container">
+        <img src="images/logo.jpg" alt="Metro Mall Logo">
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav class="nav-menu" id="nav-menu">
+        <ul>
+            <li><a href="#">Home</a></li> 
+            <li><a href="#real-estate">Real Estate</a></li> 
+            <li><a href="#hotel-booking">Hotel Booking</a></li> 
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="about.html#contact">Contact</a></li> 
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="hero" style="background-image: url('images/cart.jpg');">
+    <h1>Welcome to Metro Mall</h1>
+    <p>Your one-stop shop for auto parts, vehicles, and accessories.</p>
+    <a href="#categories"><button>Shop Now</button></a>
+</section>
+
+<!-- Featured Categories -->
+<section id="categories">
+    <h2>Featured Categories</h2>
+    <div class="featured-categories">
+        <a href="cars.html" class="category">
+            <img src="images/cars.jpg" alt="Cars">
+            <h3>Cars</h3>
+            <button class="wishlist-btn">❤️ Wishlist</button>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </a>
+        <a href="auto-parts.html" class="category">
+            <img src="images/autopart.jpg" alt="Auto Parts">
+            <h3>Auto Parts</h3>
+            <button class="wishlist-btn">❤️ Wishlist</button>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </a>
+        <a href="accessories.html" class="category">
+            <img src="images/accessories.jpg" alt="Accessories">
+            <h3>Accessories</h3>
+        </a>
+        <a href="electronics.html" class="category">
+            <img src="images/electronics.jpg" alt="Electronics">
+            <h3>Electronics</h3>
+        </a>
+        <a href="fashion.html" class="category">
+            <img src="images/fashion1.jpg" alt="Fashion">
+            <h3>Fashion</h3>
+        </a>
+        <a href="real-estate.html" class="category">
+            <img src="images/real-estate.jpg" alt="Real Estate">
+            <h3>Real Estate</h3>
+        </a>
+    </div>
+</section>
+
+<!-- Real Estate Section -->
+<section id="real-estate">
+    <h2>Explore Real Estate</h2>
+    <div class="real-estate-grid">
+        <div class="property">
+            <img src="images/property1.jpg" alt="Luxury Apartment">
+            <h3>Luxury Apartment</h3>
+            <p>$200,000</p>
+        </div>
+        <div class="property">
+            <img src="images/property2.jpg" alt="Family Home">
+            <h3>Family Home</h3>
+            <p>$350,000</p>
+        </div>
+        <div class="property">
+            <img src="images/property3.jpg" alt="Modern Villa">
+            <h3>Modern Villa</h3>
+            <p>$500,000</p>
+        </div>
+        <div class="property">
+            <img src="images/hotel2.jpg" alt="Downtown Condo">
+            <h3>Downtown Condo</h3>
+            <p>$450,000</p>
+        </div>
+    </div>
+</section>
+
+<!-- Hotel Booking Section -->
+<section id="hotel-booking">
+    <h2>Find Your Perfect Stay</h2>
+    <div class="hotel-slider">
+        <div class="slides">
+            <img src="images/hotel1.jpg" alt="Luxury Hotel">
+            <img src="images/hotel2.jpg" alt="Beach Resort">
+            <img src="images/property3.jpg" alt="Cozy Hotel Room">
+        </div>
+    </div>
+    <form>
+        <label for="city">City/Hotel Name:</label>
+        <input type="text" id="city" placeholder="Enter city or hotel name">
+        <label for="check-in">Check-In Date:</label>
+        <input type="date" id="check-in">
+        <label for="check-out">Check-Out Date:</label>
+        <input type="date" id="check-out">
+        <button type="submit">Search Hotels</button>
+    </form>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonials">
+        <div class="testimonial">
+            <p>"Metro Mall provided top-quality parts for my car. Highly recommend!" - John Doe</p>
+        </div>
+        <div class="testimonial">
+            <p>"Great prices and fast delivery. Metro Mall is my go-to shop!" - Jane Smith</p>
+        </div>
+        <div class="testimonial">
+            <p>"Amazing customer service and affordable products. 5 stars!" - Michael Lee</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2025 Metro Mall. All rights reserved.</p>
+    <p>Developed by <a href="https://wa.me/+2347082863391" target="_blank">Lateef Ahmad Adisa</a></p>
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/+2348134029388" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</footer>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="wishlist.html" class="nav-item">
+        <i class="fas fa-heart"></i>
+        <span>Wishlist</span>
+    </a>
+    <a href="cart.html" class="nav-item">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+    </a>
+    <div class="nav-item categories-dropdown">
+        <i class="fas fa-th"></i>
+        <span>Categories</span>
+        <div class="dropdown-content">
+            <a href="auto-parts.html">Auto Parts</a>
+            <a href="cars.html">Cars</a>
+            <a href="accessories.html">Accessories</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="real-estate.html">Real Estate</a>
+            <a href="electronics.html">Electronics</a>
+        </div>
+    </div>
+    <a href="profile.html" class="nav-item">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+    </a>
+</div>
+
+<!-- Styles for Improved Bottom Navigation -->
+<style>
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        background: #ffffff;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .nav-item {
+        text-align: center;
+        flex: 1;
+        padding: 10px 0;
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item i {
+        font-size: 20px;
+        margin-bottom: 3px;
+    }
+
+    /* Hover Effect */
+    .nav-item:hover {
+        color: #007BFF;
+    }
+
+    /* Categories Dropdown */
+    .categories-dropdown {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 150px;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        transition: background 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+        background: #f1f1f1;
+    }
+
+    /* Show Dropdown on Click */
+    .categories-dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Prevent Content Overlap with Fixed Nav */
+    body {
+        padding-bottom: 60px; /* Adjust so content doesn’t overlap */
+    }
+
+    /* Responsive Fix */
+    @media (max-width: 600px) {
+        .nav-item {
+            font-size: 12px;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+    }
+</style>
+
+<!-- JavaScript for Categories Dropdown -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const categoriesDropdown = document.querySelector(".categories-dropdown");
+        const dropdownContent = document.querySelector(".dropdown-content");
+
+        categoriesDropdown.addEventListener("click", function(event) {
+            event.stopPropagation();
+            dropdownContent.classList.toggle("show");
+        });
+
+        // Hide dropdown when clicking outside
+        document.addEventListener("click", function(event) {
+            if (!categoriesDropdown.contains(event.target)) {
+                dropdownContent.classList.remove("show");
+            }
+        });
+    });
+</script>
+
+<script src="store.js"></script>
+
+</body>
+</html>

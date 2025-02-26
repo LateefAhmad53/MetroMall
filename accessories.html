@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories - Category</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f9a825;
+        }
+
+        #category-listing {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-container input, .filter-container select {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 22%;
+        }
+
+        .filter-container input[type="number"] {
+            width: 15%;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product h3 {
+            font-size: 1.5em;
+            margin-top: 15px;
+        }
+
+        .product p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #f9a825;
+        }
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #f9a825;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Car Accessories</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="auto-parts.html">Auto Parts</a>
+            <a href="cars.html">Cars</a>
+            <a href="accessories.html">Accessories</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="real-estate.html">Real Estate</a>
+            <a href="electronics.html">Electronics</a>
+        </nav>
+    </header>
+
+    <!-- Category Listing Section -->
+    <section id="category-listing">
+
+        <!-- 🔍 Search & Filters -->
+        <div class="filter-container">
+            <input type="text" id="search" placeholder="Search for accessories...">
+            <select id="category-filter">
+                <option value="">All Categories</option>
+                <option value="Interior">Interior</option>
+                <option value="Exterior">Exterior</option>
+                <option value="Electronics">Electronics</option>
+            </select>
+            <input type="number" id="min-price" placeholder="Min Price">
+            <input type="number" id="max-price" placeholder="Max Price">
+        </div>
+
+        <!-- 🎧 Product Listing -->
+        <div class="product-grid" id="product-grid">
+            <div class="product" data-category="Interior" data-price="30">
+                <img src="images/seat-cover.jpg" alt="Seat Cover">
+                <h3>Luxury Seat Cover</h3>
+                <p>$30</p>
+            </div>
+            <div class="product" data-category="Exterior" data-price="45">
+                <img src="images/car-mirror.jpg" alt="Car Mirror">
+                <h3>Side Mirror</h3>
+                <p>$45</p>
+            </div>
+            <div class="product" data-category="Electronics" data-price="100">
+                <img src="images/dashcam.jpg" alt="Dash Cam">
+                <h3>Dashboard Camera</h3>
+                <p>$100</p>
+            </div>
+            <div class="product" data-category="Electronics" data-price="60">
+                <img src="images/car-speakers.jpg" alt="Car Speakers">
+                <h3>High Bass Car Speakers</h3>
+                <p>$60</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Metro Mall | A subsidiary of Dawsen Group SL Ltd.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="https://wa.me/+2348134029388" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+    </footer>
+
+    <!-- Search & Filter Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search');
+            const categoryFilter = document.getElementById('category-filter');
+            const minPrice = document.getElementById('min-price');
+            const maxPrice = document.getElementById('max-price');
+            const products = document.querySelectorAll('.product');
+
+            function filterProducts() {
+                const searchText = searchInput.value.toLowerCase();
+                const selectedCategory = categoryFilter.value;
+                const min = minPrice.value ? parseInt(minPrice.value) : 0;
+                const max = maxPrice.value ? parseInt(maxPrice.value) : Infinity;
+
+                products.forEach(product => {
+                    const title = product.querySelector('h3').innerText.toLowerCase();
+                    const category = product.dataset.category;
+                    const price = parseInt(product.dataset.price);
+
+                    const matchesSearch = title.includes(searchText);
+                    const matchesCategory = selectedCategory === "" || category === selectedCategory;
+                    const matchesPrice = price >= min && price <= max;
+
+                    product.style.display = (matchesSearch && matchesCategory && matchesPrice) ? "block" : "none";
+                });
+            }
+
+            searchInput.addEventListener('input', filterProducts);
+            categoryFilter.addEventListener('change', filterProducts);
+            minPrice.addEventListener('input', filterProducts);
+            maxPrice.addEventListener('input', filterProducts);
+        });
+    </script>
+
+</body>
+</html>

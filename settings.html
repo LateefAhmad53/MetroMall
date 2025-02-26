@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Metro Mall</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Dark Luxury Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1e1e1e);
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Store Header */
+        .store-header {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: gold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Premium Settings Title */
+        .settings-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: gold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Settings Container */
+        .settings-container {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Input Fields */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid gold;
+            background: rgba(255, 215, 0, 0.1);
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: white;
+            background: gold;
+            color: black;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: gold;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Save Button */
+        .save-btn {
+            background: gold;
+            color: black;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            transition: 0.3s;
+        }
+
+        .save-btn:hover {
+            background: black;
+            color: gold;
+            box-shadow: 0 0 15px gold;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1 class="store-header">Metro Mall</h1>
+        <h2 class="settings-title">⚙️ Settings</h2>
+
+        <input type="text" id="name" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="New Password">
+        
+        <label>Change Profile Picture</label>
+        <input type="file" id="profile-upload" accept="image/*">
+        
+        <label>Change Banner Image</label>
+        <input type="file" id="banner-upload" accept="image/*">
+        
+        <button class="save-btn" onclick="saveSettings()">Save Changes</button>
+    </div>
+
+    <script>
+        function loadSettings() {
+            let user = JSON.parse(localStorage.getItem("user")) || {};
+            document.getElementById("name").value = user.name || "";
+            document.getElementById("email").value = user.email || "";
+        }
+
+        function saveSettings() {
+            let user = JSON.parse(localStorage.getItem("user")) || {};
+            user.name = document.getElementById("name").value;
+            user.email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            if (password) user.password = password;
+            localStorage.setItem("user", JSON.stringify(user));
+            alert("Settings saved!");
+            window.location.href = "profile.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", loadSettings);
+    </script>
+</body>
+</html>

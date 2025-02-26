@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics - Metro Mall</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff5722, #f9a825);
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #212121;
+        }
+
+        #electronics-products {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .filters input,
+        .filters select {
+            padding: 12px;
+            font-size: 1em;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            width: 22%;
+        }
+
+        .filters input[type="number"] {
+            width: 15%;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product h3 {
+            font-size: 1.8em;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .product p {
+            font-size: 1.3em;
+            margin-top: 10px;
+            color: #f9a825; /* Premium yellow */
+        }
+
+        footer {
+            background-color: #212121;
+            color: #fff;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #f9a825; /* Premium yellow */
+        }
+
+        .filters input:focus,
+        .filters select:focus {
+            outline: 2px solid #f9a825; /* Yellow outline on focus */
+        }
+
+        .filters input::placeholder,
+        .filters select option {
+            color: #212121;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Electronics Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="auto-parts.html">Auto Parts</a>
+            <a href="cars.html">Cars</a>
+            <a href="accessories.html">Accessories</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="real-estate.html">Real Estate</a>
+            <a href="electronics.html">Electronics</a>
+        </nav>
+    </header>
+
+    <!-- Electronics Products Section -->
+    <section id="electronics-products">
+        <div class="filters">
+            <input type="text" id="search-electronics" placeholder="Search Electronics">
+            <select id="brand-filter-electronics">
+                <option value="">All Brands</option>
+                <option value="apple">Apple</option>
+                <option value="samsung">Samsung</option>
+                <option value="sony">Sony</option>
+            </select>
+            <input type="number" id="min-price" placeholder="Min Price">
+            <input type="number" id="max-price" placeholder="Max Price">
+        </div>
+
+        <div class="product-list">
+            <div class="product" data-brand="apple" data-price="999">
+                <img src="images/electronics1.jpg" alt="iPhone">
+                <h3>Apple iPhone 14</h3>
+                <p>$999</p>
+            </div>
+            <div class="product" data-brand="samsung" data-price="850">
+                <img src="images/electronics2.jpg" alt="Samsung TV">
+                <h3>Samsung Smart TV</h3>
+                <p>$850</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Metro Mall | A subsidiary of Dawsen Group SL Ltd.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="https://wa.me/+2348134029388" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+    </footer>
+
+    <!-- Search & Filter Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search-electronics');
+            const brandFilter = document.getElementById('brand-filter-electronics');
+            const minPrice = document.getElementById('min-price');
+            const maxPrice = document.getElementById('max-price');
+            const products = document.querySelectorAll('.product');
+
+            function filterProducts() {
+                const searchText = searchInput.value.toLowerCase();
+                const selectedBrand = brandFilter.value;
+                const min = minPrice.value ? parseInt(minPrice.value) : 0;
+                const max = maxPrice.value ? parseInt(maxPrice.value) : Infinity;
+
+                products.forEach(product => {
+                    const title = product.querySelector('h3').innerText.toLowerCase();
+                    const brand = product.dataset.brand;
+                    const price = parseInt(product.dataset.price);
+
+                    const matchesSearch = title.includes(searchText);
+                    const matchesBrand = selectedBrand === "" || brand === selectedBrand;
+                    const matchesPrice = price >= min && price <= max;
+
+                    product.style.display = (matchesSearch && matchesBrand && matchesPrice) ? "block" : "none";
+                });
+            }
+
+            searchInput.addEventListener('input', filterProducts);
+            brandFilter.addEventListener('change', filterProducts);
+            minPrice.addEventListener('input', filterProducts);
+            maxPrice.addEventListener('input', filterProducts);
+        });
+    </script>
+
+</body>
+</html>

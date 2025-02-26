@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Metro Mall</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Premium Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1e1e1e);
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Checkout Container */
+        .checkout-container {
+            width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Store Header */
+        .store-header {
+            font-size: 26px;
+            font-weight: bold;
+            color: gold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Input Fields */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid gold;
+            background: rgba(255, 215, 0, 0.1);
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: white;
+            background: gold;
+            color: black;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: gold;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid gold;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: left;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        /* Checkout Button */
+        .checkout-btn {
+            background: gold;
+            color: black;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: black;
+            color: gold;
+            box-shadow: 0 0 15px gold;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h2 class="store-header">🛒 Checkout</h2>
+
+        <div class="order-summary" id="order-summary">No items in cart.</div>
+
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your name">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email">
+
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" placeholder="Enter your address">
+
+        <label for="payment">Payment Method</label>
+        <select id="payment">
+            <option value="credit_card">Credit/Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="crypto">Cryptocurrency</option>
+            <option value="cash">Cash on Delivery</option>
+        </select>
+
+        <button class="checkout-btn" onclick="placeOrder()">Confirm & Place Order</button>
+    </div>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let orderSummary = document.getElementById("order-summary");
+
+            if (cart.length) {
+                orderSummary.innerHTML = cart.map(item => `
+                    <div class="order-item">
+                        <strong>Item:</strong> ${item.name} - <strong>₦${item.price}</strong>
+                    </div>
+                `).join("");
+            } else {
+                orderSummary.innerHTML = "<p class='no-orders'>No items in cart.</p>";
+            }
+        }
+
+        function placeOrder() {
+            let name = document.getElementById("fullname").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let address = document.getElementById("address").value.trim();
+            let payment = document.getElementById("payment").value;
+
+            if (!name || !email || !address) {
+                alert("Please fill in all details.");
+                return;
+            }
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            let orderDetails = cart.map(item => `${item.name} - ₦${item.price}`).join(", ");
+            let orderData = {
+                name,
+                email,
+                address,
+                paymentMethod: payment,
+                items: orderDetails,
+                date: new Date().toLocaleString()
+            };
+
+            let orders = JSON.parse(localStorage.getItem("orders")) || [];
+            orders.push(orderData.items + " - " + orderData.date);
+            localStorage.setItem("orders", JSON.stringify(orders));
+            localStorage.removeItem("cart");
+
+            alert("Order placed successfully! Your items will be delivered soon.");
+            window.location.href = "order-history.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCart);
+    </script>
+
+</body>
+</html>
